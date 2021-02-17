@@ -1,18 +1,28 @@
 package com.udacity.jdnd.course3.critter.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
+import org.hibernate.annotations.Nationalized;
+
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Pet {
+    @Id
+    @GeneratedValue
     private long id;
+
+    @Enumerated(EnumType.STRING)
     private PetType type;
+
+    @Nationalized
     private String name;
+
+    @ManyToOne(fetch = FetchType.LAZY)
     private Customer owner;
     private LocalDate birthDate;
+
+    @Nationalized
     private String notes;
 
     public long getId() {
