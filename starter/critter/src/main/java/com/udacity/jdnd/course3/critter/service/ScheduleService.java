@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface ScheduleService {
 
+    Schedule saveSchedule(Schedule schedule);
     List<Schedule> getAllSchedules();
     List<Schedule> getScheduleByPetId(long petId);
     List<Schedule> getScheduleByEmployeeId(long employeeId);

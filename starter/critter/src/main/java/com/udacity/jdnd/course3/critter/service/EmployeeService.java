@@ -11,6 +11,7 @@ import java.util.Set;
 public interface EmployeeService {
 
     Employee saveEmployee(Employee employee);
+    List<Employee> getAllEmployees();
     Employee getEmployee(long employeeId);
     void setAvailability(Set<DayOfWeek> daysAvailable, long employeeId);
     List<Employee> getEmployeesForService(Set<EmployeeSkill> skills, DayOfWeek dayOfWeek);
