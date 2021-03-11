@@ -6,8 +6,10 @@ import com.udacity.jdnd.course3.critter.service.ScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
+@Transactional
 @Service
 public class ScheduleServiceImpl implements ScheduleService {
 
@@ -26,12 +28,12 @@ public class ScheduleServiceImpl implements ScheduleService {
 
     @Override
     public List<Schedule> getScheduleByPetId(long petId) {
-        return scheduleRepository.findAllByPetId(petId);
+        return scheduleRepository.findAllByPetsId(petId);
     }
 
     @Override
     public List<Schedule> getScheduleByEmployeeId(long employeeId) {
-        return scheduleRepository.findAllByEmployeeId(employeeId);
+        return scheduleRepository.findAllByEmployeesId(employeeId);
     }
 
     @Override

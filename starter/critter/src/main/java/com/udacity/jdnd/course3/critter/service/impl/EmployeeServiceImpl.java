@@ -1,17 +1,14 @@
 package com.udacity.jdnd.course3.critter.service.impl;
 
-import com.udacity.jdnd.course3.critter.DTO.EmployeeRequestDTO;
 import com.udacity.jdnd.course3.critter.entity.Employee;
 import com.udacity.jdnd.course3.critter.entity.EmployeeSkill;
 import com.udacity.jdnd.course3.critter.repository.EmployeeRepository;
 import com.udacity.jdnd.course3.critter.service.EmployeeService;
-import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.time.DayOfWeek;
-import java.time.LocalDate;
 import java.util.*;
 
 @Transactional
