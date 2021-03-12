@@ -28,13 +28,19 @@ public class PetController {
     @PostMapping
     public PetDTO savePet(@RequestBody PetDTO petDTO) {
         Pet pet = dtoToPet(petDTO);
+        Customer owner = null;
         //check if it has any owner
         //if it's true, assign it to pet instance
         if((Long) petDTO.getOwnerId() != null) {
-            Customer owner = customerService.getCustomerByPetId(petDTO.getOwnerId());
+            owner = customerService.getCustomerByPetId(petDTO.getOwnerId());
             pet.setOwner(owner);
         }
         pet = petService.savePet(pet);
+
+        if(owner != null){
+            owner.addPet(pet);
+        }
+
         return petToDTO(pet);
     }
 
