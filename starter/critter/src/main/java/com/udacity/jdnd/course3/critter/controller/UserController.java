@@ -121,7 +121,7 @@ public class UserController {
         List<Long> petIds = customerDTO.getPetIds();
 
         List<Pet> pets = new ArrayList<>();
-        if(petIds.size() != 0){
+        if(petIds != null && petIds.size() != 0){
             for(Long id : petIds){
                 pets.add(petService.getPet(id));
             }
