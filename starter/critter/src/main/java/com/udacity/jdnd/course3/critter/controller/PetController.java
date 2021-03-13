@@ -31,13 +31,15 @@ public class PetController {
         Customer owner = null;
         //check if it has any owner
         //if it's true, assign it to pet instance
-        if((Long) petDTO.getOwnerId() != null) {
-            owner = customerService.getCustomerByPetId(petDTO.getOwnerId());
+
+        if((Long) petDTO.getOwnerId() != 0) {
+            owner = customerService.getCustomer(petDTO.getOwnerId());
             pet.setOwner(owner);
         }
         pet = petService.savePet(pet);
 
         if(owner != null){
+            System.out.println("OWNER ID IS " + owner.getId());
             owner.addPet(pet);
         }
 

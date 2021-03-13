@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @Transactional
 @Service
@@ -19,6 +21,18 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public Customer saveCustomer(Customer customer) {
         return customerRepository.save(customer);
+    }
+
+    @Override
+    public Customer getCustomer(long customerId) {
+        Customer customer;
+        Optional<Customer> byId = customerRepository.findById(customerId);
+        if(byId.isPresent()){
+            customer = byId.get();
+            return customer;
+        } else {
+            throw new NoSuchElementException("Employee with id:" + customerId + " can not be found");
+        }
     }
 
     @Override
