@@ -58,7 +58,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         List<Employee> employees = new ArrayList<>();
         List<Employee> employeesAvailable = employeeRepository.findAllByDaysAvailable(dayOfWeek);
         for (Employee e : employeesAvailable){
-            if(e.getSkills().contains(skills)){
+            if(e.getSkills().containsAll(skills)){
                 employees.add(e);
             }
         }
