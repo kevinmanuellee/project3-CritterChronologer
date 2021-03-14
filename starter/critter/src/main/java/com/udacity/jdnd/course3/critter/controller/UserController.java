@@ -61,7 +61,9 @@ public class UserController {
 
     @GetMapping("/customer/pet/{petId}")
     public CustomerDTO getOwnerByPet(@PathVariable long petId){
-        Customer customer = customerService.getCustomerByPetId(petId);
+        Pet pet = petService.getPet(petId);
+        Customer customer = pet.getOwner();
+//        Customer customer = customerService.getCustomerByPetId(petId);
         return customerToDTO(customer);
     }
 
@@ -83,6 +85,7 @@ public class UserController {
         employeeService.setAvailability(daysAvailable, employeeId);
     }
 
+//    @RequestMapping(value = "/employee/availability", method = RequestMethod.GET)
     @GetMapping("/employee/availability")
     public List<EmployeeDTO> findEmployeesForService(@RequestBody EmployeeRequestDTO requestDTO) {
         Set<EmployeeSkill> skills = requestDTO.getSkills();
